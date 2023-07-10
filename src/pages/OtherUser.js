@@ -85,7 +85,7 @@ export const OtherUser = () => {
     const postsByCurrUser = posts?.filter(
         (post) => post?.username === currUser?.username
     );
-    console.log(loggedInUser?.username, currUser?.username)
+   //console.log(loggedInUser?.username, currUser?.username)
     return (
         <div className="userprofile-container">
             <NavBar />
