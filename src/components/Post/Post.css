@@ -1,0 +1,105 @@
+.post-container {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    padding:1.2rem;
+
+    border-radius: 8px;
+    width: 480px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 10px 4px
+}
+
+.post-header {
+    display: flex;
+    gap: 14px;
+}
+
+.post-header > img {
+    align-self: flex-start;
+}
+
+.date {
+    font-size: 14px;
+    margin: auto;
+}
+
+.username-container {
+    display: flex;
+    text-decoration: none;
+    color: black;
+}
+.username-container > p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.post-content {
+    padding: 8px 0;
+    border-bottom: 1px solid black;
+    margin: 0;
+}
+
+/* .post-content > link {
+   
+} */
+
+.link {
+    text-decoration: none;
+    color: black;
+    margin: 0;
+    
+}
+
+/* .link > p {
+    
+} */
+
+.post-footer {
+    display: flex;
+    margin-top: 6px;
+    gap: 10px;
+}
+.post-btn {
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.edit-postarea {
+    border: none;
+    width: 300px;
+}
+
+.editPost-btn {
+    border: none;
+    padding: 0.6rem;
+    background-color: blueviolet;
+    color: wheat;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.modify-btns {
+    display: flex;
+    gap: 12px
+}
+
+.delete-btn {
+    align-self: flex-start;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+    padding: 8px;
+    font-weight: bold;
+}
+.edit-btn {
+    border: none;
+    align-self: flex-start;
+    cursor: pointer;
+    background-color: #fff;
+    color: red;
+    font-weight: bold;
+    padding: 8px;
+}

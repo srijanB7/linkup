@@ -1,38 +1,331 @@
-.App {
-  text-align: center;
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.login-container > h2 {
+    border-bottom: 1px solid blue;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.login-main {
+    display: flex;
+    flex-direction: column;
+    outline: 1px solid black;
+    padding: 1.5rem;
+    border-radius: 4px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.email-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.4rem;
+    gap: 6px;
+}
+
+.email-container > input {
+    padding: 6px;
+}
+
+.password-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.4rem;
+    margin-bottom: 12px;
+    gap: 6px;
+}
+
+.password-container > input {
+    padding: 6px;
+}
+
+.btn-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.4rem;
+    gap: 12px;
+    justify-content: space-around;
+}
+
+.btn-container > button {
+    background-color: deepskyblue;
+    border: none;
+    padding: 0.4rem;
+    cursor: pointer;
+    font-weight: bold;
+    color: black;
+}
+
+/* .home-container {
+  
+} */
+
+.signup-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-main {
+    display: flex;
+    flex-direction: column;
+    outline: 1px solid black;
+    padding: 1.5rem;
+    border-radius: 4px;
+    width: 300px;
+}
+
+.firstname-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.4rem;
+    gap: 6px;
+}
+
+.lastname-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.4rem;
+    gap: 6px;
+}
+
+.username-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.4rem;
+    gap: 6px;
+}
+
+.signup-email-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.4rem;
+    gap: 6px;
+}
+
+.signup-password-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.4rem;
+    gap: 6px;
+}
+
+.signup-btn-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.4rem;
+    gap: 6px;
+}
+
+.signup-btn-container > button {
+    background-color: deepskyblue;
+    border: none;
+    padding: 0.4rem;
+    cursor: pointer;
+    font-weight: bold;
+    color: black;
+}
+
+.home-body {
+    display: flex;
+    padding: 10px 40px;
+    gap: 400px;
+}
+
+.home-feed {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    
+}
+
+.filter-btns {
+    display: flex;
+   
+    justify-content: space-evenly;
+    padding: 0.5rem;
+}
+
+.filter-btns > button {
+    border: none;
+    padding: 0.6rem;
+    border-radius: 12px;
+    cursor: pointer;
+    background-color: blanchedalmond;
+    font-weight: bold;
+    opacity: 0.7;
+}
+
+.filter-btns > button:hover {
+    opacity: 1;
+}
+
+
+/* .side {
+    justify-self: flex-end;
+} */
+
+.userprofile-body {
+    margin: 8px 12px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.userprofile-feed {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.userprofile-details {
+    padding: 20px;
+    display: flex;
+    gap: 8px;
+    height: fit-content;
+    border-bottom: 1px solid aliceblue;
 }
 
-.App-link {
-  color: #61dafb;
+.userprofile-first {
+  padding: 2px 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.userprofile-second {
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  
+}
+.userprofile-second > p{
+  margin: 0;
+  padding: 0;
+}
+
+.userprofile-second > a {
+  text-decoration: none;
+  color: black;
+  
+}
+.userprofile-second > a > p {
+  margin: 0;
+  padding: 0;
+}
+
+.userprofile-third {
+    padding: 12px;
+    margin: auto;
+}
+
+.userprofile-third > button {
+  border-radius: 6px;
+  border: none;
+  padding: 0.6rem;
+  cursor: pointer;
+}
+
+.details {
+    display: flex;
+    gap: 20px;
+}
+
+.profilepage-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-position: center center;
+
+}
+
+.user-posts {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* .side {
+    
+} */
+
+.new-post {
+    padding: 0.5rem;
+    width: 100%;
+    height: 100px;
+    border-radius: 8px;
+
+}
+
+.new-post-btn {
+    border: none;
+    padding: 0.6rem;
+    background-color: blueviolet;
+    color: wheat;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.new-post-btn:hover {
+    background-color: purple;
+    font-weight: bold;
+}
+
+.bookmarks-container {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.no-bookmark-msg {
+    text-align: center;
+}
+
+.bookmark-header {
+    text-align: center;
+}
+
+.update-field {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.update-field > input {
+    width: 250px;
+}
+
+.avatar-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.avatar-option {
+    width: 70px;
+    height: 100px;
+}
+
+.explore-posts {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.single-post {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+}
+
+.loggedin-user-btns {
+    display: flex;
+    gap: 10px;
+}
+.logout-btn {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
 }

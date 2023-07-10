@@ -1,0 +1,38 @@
+.search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-container > input {
+    padding: 0.5rem;
+    width: 250px;
+    border-radius: 8px;
+}
+.search-results {
+    height: 100px;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+}
+
+.single-user {
+    display: flex;
+    align-items: center;
+}
+
+.single-user-name {
+    margin-bottom: 0;
+}
+
+.single-user-username {
+    margin: 0;
+
+}
+
+.search-user-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 4px;
+}
