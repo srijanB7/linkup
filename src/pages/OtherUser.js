@@ -30,11 +30,11 @@ export const OtherUser = () => {
     const { getPostsByUser, postsByUser, posts, getPosts } =
         useContext(PostContext);
     const { user, getUser, followUser, unfollowUser, editUser } = useContext(UserContext);
-    const { singoutHandler, currUser } = useContext(AuthContext);
+    const { singoutHandler } = useContext(AuthContext);
     const { id } = useParams();
     const { users } = useContext(UserContext);
     
-    //const currUser = users.find((user) => user._id === id);
+    const currUser = users.find((user) => user._id === id);
     const loggedInUser = JSON.parse(localStorage.getItem("user"));
 
     const following = user?.followers?.some(
