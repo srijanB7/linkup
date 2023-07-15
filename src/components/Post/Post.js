@@ -22,7 +22,7 @@ const style = {
     padding: "1rem"
 };
 
-export const Post = ({ _id, username, content, createdAt, likes, mediaURL }) => {
+export const Post = ({ _id, username, content, createdAt, likes, mediaURL, fromBookMark }) => {
     const { users } = useContext(UserContext);
     const {
         likePost,
@@ -67,12 +67,12 @@ export const Post = ({ _id, username, content, createdAt, likes, mediaURL }) => 
     function handleBookMark() {
         if (!isBookmarked) {
             addToBookMark(_id);
-            //console.log(_id);
+            
         } else {
             removeFrombookMark(_id);
         }
 
-        // console.log("bookmark")
+        
     }
 
     function handleEdit() {
@@ -91,7 +91,7 @@ export const Post = ({ _id, username, content, createdAt, likes, mediaURL }) => 
             if (res.status === 200 || res.status === 201) {
                 const data = await res.json();
                 setPost(data.post);
-                //console.log(data.post);
+                
             }
         } catch (err) {
             console.log(err);
@@ -101,7 +101,7 @@ export const Post = ({ _id, username, content, createdAt, likes, mediaURL }) => 
     useEffect(() => {
         getPost(_id);
     }, [like]);
-    //console.log(user);
+    
     return (
         <div className="post-container">
             <div className="post-header">
@@ -116,7 +116,7 @@ export const Post = ({ _id, username, content, createdAt, likes, mediaURL }) => 
                     <p>@{username}</p>
                 </Link>
                 <p className="date">{createdAt?.slice(0, 10)}</p>
-                {showDeleteAndEdit && (
+                { !fromBookMark && showDeleteAndEdit && (
                     <div className="modify-btns">
                         <button className="delete-btn" onClick={() => deletePost(_id)}>Delete</button>
                         <button className="edit-btn" onClick={() => handleOpen()}>Edit</button>

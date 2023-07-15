@@ -42,7 +42,7 @@ export const Home = () => {
         showPosts.sort((a, b) => b.likes?.likeCount - a.likes?.likeCount);
     }
 
-    //console.log(showPosts);
+    
     function handlePostClick() {
         const newPostDetails = {
             content: post,

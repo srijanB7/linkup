@@ -10,7 +10,7 @@ export const SearchBar = () => {
         return fullName.includes(searchText);
     });
     if (searchText === "") searchResults = [];
-    //console.log(searchResults);
+    
 
     return (
         <>

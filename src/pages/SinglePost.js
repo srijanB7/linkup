@@ -9,7 +9,7 @@ export const SinglePost = () => {
     const { posts, getPosts } = useContext(PostContext);
 
     const post = posts?.find((post) => post._id === id);
-    //console.log(post);
+   
     
     useEffect(() => {
         getPosts();

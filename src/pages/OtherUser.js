@@ -30,11 +30,11 @@ export const OtherUser = () => {
     const { getPostsByUser, postsByUser, posts, getPosts } =
         useContext(PostContext);
     const { user, getUser, followUser, unfollowUser, editUser } = useContext(UserContext);
-    const { singoutHandler } = useContext(AuthContext);
+    const { singoutHandler, currUser } = useContext(AuthContext);
     const { id } = useParams();
     const { users } = useContext(UserContext);
     
-    const currUser = users.find((user) => user._id === id);
+    const currentUser = users.find((user) => user._id === id) ?? currUser;
     const loggedInUser = JSON.parse(localStorage.getItem("user"));
 
     const following = user?.followers?.some(
@@ -47,13 +47,12 @@ export const OtherUser = () => {
     const [updatedAvatar, setUpdatedAvatar] = useState("");
     const [updatedBio, setUpdatedBio] = useState("");
     const [updatedWebsite, setUpdatedWebsite] = useState(user?.website);
-    //console.log(user?.firstName, user?.followers);
     function handleFollow() {
         if (following) {
-            unfollowUser(currUser?._id);
+            unfollowUser(currentUser?._id);
             //setFollowing(false);
         } else {
-            followUser(currUser?._id);
+            followUser(currentUser?._id);
             //setFollowing(true);
         }
     }
@@ -78,14 +77,14 @@ export const OtherUser = () => {
 
     useEffect(() => {
         getUser(id);
-        getPostsByUser(currUser?.username);
+        getPostsByUser(currentUser?.username);
         getPosts();
-    }, [currUser?.username]);
+    }, [currentUser?.username]);
 
     const postsByCurrUser = posts?.filter(
-        (post) => post?.username === currUser?.username
+        (post) => post?.username === currentUser?.username
     );
-   //console.log(loggedInUser?.username, currUser?.username)
+   //console.log(loggedInUser?.username, currentUser?.username)
     return (
         <div className="userprofile-container">
             <NavBar />
@@ -103,7 +102,7 @@ export const OtherUser = () => {
                             <p>@{user?.username}</p>
                             <p>{user?.bio}</p>
 
-                            <a href={user?.website}>
+                            <a href={user?.website} target="blank">
                                 <p>website</p>
                             </a>
                             <div className="details">
@@ -112,7 +111,7 @@ export const OtherUser = () => {
                             </div>
                         </div>
                         <div className="userprofile-third">
-                            {loggedInUser?.username !== currUser?.username ? (
+                            {loggedInUser?.username !== currentUser?.username ? (
                                 <button onClick={handleFollow}>
                                     {following ? "Unfollow" : "Follow"}
                                 </button>
