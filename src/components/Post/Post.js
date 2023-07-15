@@ -7,6 +7,7 @@ import { GoComment } from "react-icons/go";
 import { Link } from "react-router-dom";
 import { PostContext } from "../../context/PostContext";
 import { Modal } from "@mui/material";
+import { AuthContext } from "../../context/AuthContext";
 
 const style = {
     position: "absolute",
@@ -19,10 +20,18 @@ const style = {
     boxShadow: 24,
     p: 4,
     backgroundColor: "#fff",
-    padding: "1rem"
+    padding: "1rem",
 };
 
-export const Post = ({ _id, username, content, createdAt, likes, mediaURL, fromBookMark }) => {
+export const Post = ({
+    _id,
+    username,
+    content,
+    createdAt,
+    likes,
+    mediaURL,
+    fromBookMark,
+}) => {
     const { users } = useContext(UserContext);
     const {
         likePost,
@@ -31,9 +40,10 @@ export const Post = ({ _id, username, content, createdAt, likes, mediaURL, fromB
         bookMarks,
         removeFrombookMark,
         deletePost,
-        editPost
+        editPost,
     } = useContext(PostContext);
-    const user = users?.find((user) => user.username === username);
+    const { currUser } = useContext(AuthContext);
+    const user = users?.find((user) => user.username === username) ?? currUser;
     const loggedInUser = JSON.parse(localStorage.getItem("user"));
     const showDeleteAndEdit = loggedInUser?.username === user?.username;
     const [like, setLike] = useState(
@@ -48,7 +58,7 @@ export const Post = ({ _id, username, content, createdAt, likes, mediaURL, fromB
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    const [postContent, setPostContent] = useState(content)
+    const [postContent, setPostContent] = useState(content);
 
     const isBookmarked = bookMarks?.some((post) => post._id === _id);
 
@@ -67,12 +77,9 @@ export const Post = ({ _id, username, content, createdAt, likes, mediaURL, fromB
     function handleBookMark() {
         if (!isBookmarked) {
             addToBookMark(_id);
-            
         } else {
             removeFrombookMark(_id);
         }
-
-        
     }
 
     function handleEdit() {
@@ -91,7 +98,6 @@ export const Post = ({ _id, username, content, createdAt, likes, mediaURL, fromB
             if (res.status === 200 || res.status === 201) {
                 const data = await res.json();
                 setPost(data.post);
-                
             }
         } catch (err) {
             console.log(err);
@@ -101,7 +107,7 @@ export const Post = ({ _id, username, content, createdAt, likes, mediaURL, fromB
     useEffect(() => {
         getPost(_id);
     }, [like]);
-    
+
     return (
         <div className="post-container">
             <div className="post-header">
@@ -116,35 +122,43 @@ export const Post = ({ _id, username, content, createdAt, likes, mediaURL, fromB
                     <p>@{username}</p>
                 </Link>
                 <p className="date">{createdAt?.slice(0, 10)}</p>
-                { !fromBookMark && showDeleteAndEdit && (
+                {!fromBookMark && showDeleteAndEdit && (
                     <div className="modify-btns">
-                        <button className="delete-btn" onClick={() => deletePost(_id)}>Delete</button>
-                        <button className="edit-btn" onClick={() => handleOpen()}>Edit</button>
+                        <button
+                            className="delete-btn"
+                            onClick={() => deletePost(_id)}
+                        >
+                            Delete
+                        </button>
+                        <button
+                            className="edit-btn"
+                            onClick={() => handleOpen()}
+                        >
+                            Edit
+                        </button>
                     </div>
                 )}
-                <Modal
-                    open={open}
-                    onClose={handleClose}
-                    
-                >
+                <Modal open={open} onClose={handleClose}>
                     <div className="modal-container" style={style}>
                         <img
                             src={user?.avatarUrl}
                             className="profilepage-image"
                         />
-                        <textarea className="edit-postarea" value={postContent} onChange={(e) => setPostContent(e.target.value)}>
-
-                        </textarea>
-                        <button className="editPost-btn" onClick={handleEdit}>Post</button>
+                        <textarea
+                            className="edit-postarea"
+                            value={postContent}
+                            onChange={(e) => setPostContent(e.target.value)}
+                        ></textarea>
+                        <button className="editPost-btn" onClick={handleEdit}>
+                            Post
+                        </button>
                     </div>
                 </Modal>
             </div>
             <div className="post-content">
                 <Link className="link" to={`/post/${_id}`}>
                     <p>{content}</p>
-                    {
-                        mediaURL !== "" && <img src={mediaURL}/>
-                    }
+                    {mediaURL !== "" && <img src={mediaURL} />}
                 </Link>
             </div>
             <div className="post-footer">
@@ -163,7 +177,6 @@ export const Post = ({ _id, username, content, createdAt, likes, mediaURL, fromB
                         <RiBookmarkFill size="20px" color="black" />
                     )}
                 </button>
-                
             </div>
         </div>
     );

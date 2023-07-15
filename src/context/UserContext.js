@@ -13,7 +13,6 @@ export const UserProvider = ({ children }) => {
             const res = await fetch("/api/users");
             if (res.status === 200 || res.status === 201) {
                 const data = await res.json();
-                console.log(user);
                 setUsers(data.users);
             }
             if (res.status === 400) {
@@ -67,7 +66,6 @@ export const UserProvider = ({ children }) => {
             if (res.status === 200 || res.status === 201) {
                 const data = await res.json();
                 setUser(data?.followUser);
-                //console.log(data);
             }
         } catch (err) {
             console.log(err);
