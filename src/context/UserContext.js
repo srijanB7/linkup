@@ -66,6 +66,7 @@ export const UserProvider = ({ children }) => {
             if (res.status === 200 || res.status === 201) {
                 const data = await res.json();
                 setUser(data?.followUser);
+                setCurrUser(data?.user);
             }
         } catch (err) {
             console.log(err);
